@@ -36,6 +36,6 @@ doc_splits = text_splitter.split_documents(docs_list)
 
 retriever = Chroma(
     collection_name="rag-chroma",
-    persist_directory="./.chroma",
+    persist_directory="../.chroma",
     embedding_function=OpenAIEmbeddings(),
 ).as_retriever()
