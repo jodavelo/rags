@@ -1,5 +1,6 @@
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(temperature=0)
@@ -21,4 +22,20 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-generation_chain = prompt | llm | StrOutputParser()
+def format_docs(docs) -> str:
+    """Render retrieved documents as plain text.
+
+    Interpolating Document objects directly would dump their full metadata
+    (Unstructured's `orig_elements` alone is ~30k chars per doc) into the prompt.
+    """
+    return "\n\n".join(
+        doc.page_content if hasattr(doc, "page_content") else str(doc) for doc in docs
+    )
+
+
+generation_chain = (
+    RunnablePassthrough.assign(context=lambda x: format_docs(x["context"]))
+    | prompt
+    | llm
+    | StrOutputParser()
+)

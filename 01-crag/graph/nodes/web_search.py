@@ -16,7 +16,8 @@ def web_search(state: GraphState) -> Dict[str, Any]:
     question = state["question"]
     documents = state["documents"]
 
-    tavily_results = web_search_tool.invoke({"query": question}).get("results", [])
+    #tavily_results = web_search_tool.invoke({"query": question}).get("results", [])
+    tavily_results = web_search_tool.invoke({"query": question})['results']
     joined_tavily_result = "\n".join(
         [tavily_result["content"] for tavily_result in tavily_results]
     )
