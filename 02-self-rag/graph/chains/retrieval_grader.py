@@ -13,9 +13,7 @@ class GradeDocuments(BaseModel):
     )
 
 
-structured_llm_grader = llm.with_structured_output(
-    GradeDocuments, method="function_calling"
-)
+structured_llm_grader = llm.with_structured_output(GradeDocuments)
 
 system = """You are a grader assessing relevance of a retrieved document to a user question. \n
     If the document contains keyword(s) or semantic meaning related to the question, grade it as relevant. \n
