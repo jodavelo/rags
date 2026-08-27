@@ -2,8 +2,5 @@
   "python-envs.defaultEnvManager": "ms-python.python:poetry",
   "python-envs.defaultPackageManager": "ms-python.python:poetry",
   "python.terminal.executeInFileDir": false,
-  "python.envFile": "${workspaceFolder}/.env",
-  "terminal.integrated.env.windows": {
-    "PYTHONPATH": "${workspaceFolder}\\01-crag"
-  }
+  "python.envFile": "${workspaceFolder}/.env"
 }

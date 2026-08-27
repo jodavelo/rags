@@ -13,6 +13,19 @@
       "env": {
         "PYTHONPATH": "${workspaceFolder}/01-crag"
       }
+    },
+    {
+      "name": "Python: Current File (02-self-rag)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/02-self-rag",
+      "python": "${workspaceFolder}/02-self-rag/.venv/Scripts/python.exe",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/02-self-rag"
+      }
     }
   ]
 }
